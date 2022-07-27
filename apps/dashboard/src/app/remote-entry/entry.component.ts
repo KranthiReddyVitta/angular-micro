@@ -6,6 +6,7 @@ import { distinctUntilChanged } from 'rxjs';
 @Component({
   selector: 'angularmicro-dashboard-entry',
   template: ` <div class="dashboard-nav">Admin Dashboard</div>
+    <a routerLink="/report">Go to report</a>
     <div *ngIf="isLoggedIn$ | async; else signIn">
       You are authenticated so you can see this content.
     </div>
@@ -14,11 +15,5 @@ import { distinctUntilChanged } from 'rxjs';
 export class RemoteEntryComponent {
   isLoggedIn$ = this.userService.isUserLoggedIn$;
   constructor(private userService: UserService, private router: Router) {}
-  ngOnInit() {
-    this.isLoggedIn$
-      .pipe(distinctUntilChanged())
-      .subscribe(async (loggedIn) => {
-        this.router.navigateByUrl('');
-      });
-  }
+  ngOnInit() {}
 }

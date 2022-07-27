@@ -26,6 +26,13 @@ import { loadRemoteModule } from '@nrwl/angular/mf';
               return m.RemoteEntryModule;
             }),
         },
+        {
+          path: 'report',
+          loadChildren: () =>
+            loadRemoteModule('report', './Module').then(
+              (m) => m.RemoteEntryModule
+            ),
+        },
       ],
       { initialNavigation: 'enabledBlocking' }
     ),
